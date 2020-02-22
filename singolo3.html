@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+    <link rel="stylesheet" href="singolo3.css">
+  </head>
+  <body>
+    <h1 class="visually-hidden">Singolo</h1>
+
+    <div class="page">
+      <main class="main page__main">
+        <section class="feedback">
+          <div class="container">
+            <h2 class="secondary-title feedback__title">Get a Quote</h2>
+
+            <p class="feedback__description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+
+            <div class="column-3">
+              <div class="column-3__item column-3__item--wide">
+                <form class="feedback-form feedback__feedback-form" action method="POST">
+                  <div class="feedback-form__item">
+                    <label class="visually-hidden" for="user-name">Name:</label>
+                    <input class="custom-input" type="text" name="user-name" id="user-name" placeholder="Name (Required)" required>
+                  </div>
+
+                  <div class="feedback-form__item">
+                    <label class="visually-hidden" for="user-mail">Email:</label>
+                    <input class="custom-input" type="email" name="user-mail" id="user-mail" placeholder="Email (Required)" required>
+                  </div>
+
+                  <div class="feedback-form__item">
+                    <label class="visually-hidden" for="user-subject">Subject:</label>
+                    <input class="custom-input" type="text" name="user-subject" id="user-subject" placeholder="Subject">
+                  </div>
+
+                  <div class="feedback-form__item">
+                    <label class="visually-hidden" for="user-message">Subject:</label>
+                    <textarea class="custom-input feedback-form__textarea" name="user-message" id="user-message" placeholder="Describe your project in detail..."></textarea>
+                  </div>
+
+                  <button class="button feedback-form__button" type="submit">Submit</button>
+                </form>
+              </div>
+
+              <div class="column-3__item">
+                <section class="contacts">
+                  <h3 class="tertiary-title contacts__title">Contact Information</h3>
+
+                  <p class="contacts__description">Quisque hendrerit purus dapibus, ornare nibh vitae, viverra nibh. Fusce vitae aliquam tellus. Proin sit amet volutpat libero. Nulla sed nunc et tortor luctus faucibus. Morbi at aliquet turpis, et consequat felis. </p>
+
+                  <ul class="contacts__list">
+                    <li class="contacts__item">
+                      <span class="contacts__item-content contacts__item-content--address">Elm St. 14/05 Lost City</span>
+                    </li>
+
+                    <li class="contacts__item">
+                      <a class="contacts__item-content contacts__item-content--phone" href="tel:035283318635">03528 331 86 35</a>
+                    </li>
+
+                    <li class="contacts__item">
+                      <a class="contacts__item-content contacts__item-content--mail" href="mailto:info@singolo.com">info@singolo.com</a>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="main-footer page-footer">
+        <div class="container">
+          <div class="main-footer__inner">
+            <p class="main-footer__copyright">© Copyright 2013 · by PSDchat.com</p>
+
+            <ul class="social footer__social">
+              <li class="social__item">
+                <a class="social__link social__link--facebook" href="#">
+                  <span class="visually-hidden">Adam Jensen on Facebook</span>
+                </a>
+              </li>
+
+              <li class="social__item">
+                <a class="social__link social__link--google" href="#">
+                  <span class="visually-hidden">Adam Jensen on Google Plus</span>
+                </a>
+              </li>
+
+              <li class="social__item">
+                <a class="social__link social__link--twitter" href="#">
+                  <span class="visually-hidden">Adam Jensen on Twitter</span>
+                </a>
+              </li>
+
+              <li class="social__item">
+                <a class="social__link social__link--linkedin" href="#">
+                  <span class="visually-hidden">Adam Jensen on Linkedin</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
