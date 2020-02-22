@@ -67,7 +67,7 @@
   flex-grow: 1;
   width: 300px;
   margin-right: 10px;
-  margin-bottom: 26px;
+  margin-bottom: 29px;
   margin-left: 10px;
 }
 
@@ -135,7 +135,7 @@ img {
 .main-header {
   position: relative;
 
-  padding-top: 34px;
+  padding-top: 33px;
   padding-bottom: 32px;
 
   color: #ffffff;
@@ -149,6 +149,11 @@ img {
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+.main-header__main-nav {
+  margin-top: 1px;
+  margin-right: -1px;
 }
 
 .primary-title {
@@ -199,13 +204,14 @@ img {
   line-height: 1;
   color: #ffffff;
   text-transform: uppercase;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
 }
 
 .main-logo__asterisk {
   position: absolute;
-  top: -2px;
+  top: -1px;
   right: -9px;
+  font-size: inherit;
 
   color: #f06c64;
 }
@@ -220,7 +226,19 @@ img {
 }
 
 .main-nav__item {
-  margin-right: 28px;
+  position: relative;
+  padding-right: 29px;
+}
+
+.main-nav__item:not(:last-child)::after {
+  content: "·";
+  position: absolute;
+  top: calc(50% - 6px);
+  right: 12px;
+  color: #767e9e;
+  font-size: 1.2rem;
+  line-height: 1;
+  font-weight: 600;
 }
 
 .main-nav__item--active .main-nav__link {
@@ -228,7 +246,7 @@ img {
 }
 
 .main-nav__item:last-child {
-  margin-right: 0;
+  padding-right: 0;
 }
 
 .main-nav__link {
@@ -414,7 +432,8 @@ img {
 
   font-weight: 400;
   font-size: 1.2rem;
-  line-height: 1.9;
+  line-height: 1.8;
+  text-align: justify;
   text-overflow: ellipsis;
   word-wrap: break-word;
   word-break: break-word;
@@ -425,8 +444,8 @@ img {
 
 .service__icon {
   position: absolute;
-  top: 4px;
-  left: 2px;
+  top: 3px;
+  left: 1px;
 
   width: 59px;
   height: 59px;
