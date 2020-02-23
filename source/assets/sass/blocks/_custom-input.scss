@@ -1,0 +1,38 @@
+.custom-input {
+  background-color: $custom-input-bg-color;
+  width: 100%;
+  padding: 6px 11px 7px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+
+  font-family: inherit;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: $custom-input-text-color;
+  transition: all 0.3s ease-in-out;
+
+  outline: none;
+
+  &:hover,
+  &:focus {
+    border-color: $feedback-button-color;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px $custom-input-bg-color inset;
+    -webkit-text-fill-color: $custom-input-text-color;
+    border-color: $custom-input-bg-color;
+    border-radius: 2px;
+  }
+
+  &::placeholder {
+    color: inherit;
+  }
+
+  &::-ms-input-placeholder {
+    color: inherit;
+  }
+}

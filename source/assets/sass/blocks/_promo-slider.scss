@@ -1,0 +1,71 @@
+.promo-slider {
+  position: relative;
+  height: 600px;
+  padding-top: 53px;
+  padding-bottom: 50px;
+  background-color: $pink;
+
+  box-shadow: inset 0 -6px 0 0 #ea676b;
+
+  overflow: hidden;
+
+  .container {
+    position: relative;
+    height: 100%;
+  }
+}
+
+.promo-slider__slides {
+  margin: 0;
+  padding: 0 73px 0 72px;
+  list-style-type: none;
+
+  height: inherit;
+}
+
+.promo-slider__slide {
+  position: relative;
+  height: inherit;
+  z-index: 1;
+}
+
+.promo-slider__button {
+  position: absolute;
+  top: calc(50% - 19px);
+  left: 13px;
+
+  width: 16px;
+  height: 27px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-image: url("../assets/img/icon-slider-arrow.png");
+
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &:active {
+    transform: scale(1.1);
+  }
+
+  &--right {
+    left: initial;
+    right: 8px;
+    transform: rotate(180deg);
+
+    &:hover {
+      transform: rotate(180deg) scale(1.2);
+    }
+
+    &:active {
+      transform: rotate(180deg) scale(1.1);
+    }
+  }
+}

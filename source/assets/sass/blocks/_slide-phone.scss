@@ -1,0 +1,53 @@
+.slide-phone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 483px;
+
+  background-image: url("../assets/img/bg-phone-shadow.png");
+  background-repeat: no-repeat;
+  background-position: left top;
+
+  // Phone, screen
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+
+    z-index: 1;
+  }
+
+  &--vertical {
+    // Phone, screen
+    &::before {
+      background-image:
+        url("../assets/img/bg-phone-screen-1.jpg"),
+        url("../assets/img/bg-phone.png");
+      background-position:
+        14px 65px,
+        left top;
+    }
+  }
+
+  &--horizontal {
+    left: initial;
+    right: 0;
+    transform: rotate(90deg) rotateX(180deg) translateY(-121px);
+
+    // Phone, screen
+    &::before {
+      background-image:
+        url("../assets/img/bg-phone-screen-2.jpg"),
+        url("../assets/img/bg-phone.png");
+      background-position:
+        14px 90px,
+        left bottom;
+      transform: rotateX(180deg);
+    }
+  }
+}

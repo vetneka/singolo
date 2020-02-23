@@ -1,0 +1,26 @@
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 11px 20px;
+  border: 0;
+
+  font-size: $base-font-size * 1.125;
+  line-height: 1;
+  font-weight: 600;
+  color: red;
+  text-decoration: none;
+
+  background-color: transparent;
+
+  cursor: pointer;
+
+  &:hover {
+  }
+
+  &:active {
+  }
+}
+
+@media (min-width: $tablet-width) {
+}

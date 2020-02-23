@@ -1,0 +1,17 @@
+.column-4 {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.column-4__item {
+  flex-grow: 1;
+
+  width: 220px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}

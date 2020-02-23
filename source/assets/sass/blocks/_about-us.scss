@@ -1,0 +1,26 @@
+.about-us {
+  padding: 58px 0 43px;
+  box-shadow: inset 0 -6px 0 0 $white;
+}
+
+.about-us__title {
+  margin-bottom: 17px;
+}
+
+.about-us__description {
+  margin: 0;
+  margin-bottom: 44px;
+  line-height: 1.7;
+  letter-spacing: 0.008em;
+}
+
+.about-us__team {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.about-us__team-item {
+  width: inherit;
+}

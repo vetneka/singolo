@@ -1,0 +1,22 @@
+.main-header {
+  position: relative;
+  padding-top: 33px;
+  padding-bottom: 32px;
+
+  background-color: $background-dark;
+  color: $white;
+
+  box-shadow: inset 0 -6px 0 0 #323746;
+}
+
+.main-header__inner {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.main-header__main-nav {
+  margin-top: 1px;
+  margin-right: -1px;
+}

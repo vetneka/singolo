@@ -1,0 +1,21 @@
+.column-3 {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.column-3__item {
+  flex-grow: 1;
+
+  width: 300px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 30px;
+
+  &--wide {
+    width: 620px;
+  }
+}

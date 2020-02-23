@@ -1,0 +1,22 @@
+.feedback {
+  padding: 58px 0 37px;
+  background-color: $pink;
+  color: $feedback-text-color;
+
+  box-shadow: inset 0 -6px 0 0 #ea676b;
+}
+
+.feedback__title {
+  color: inherit;
+  margin-bottom: 18px;
+}
+
+.feedback__description {
+  margin: 0;
+  margin-bottom: 42px;
+  letter-spacing: 0.008em;
+}
+
+.feedback__feedback-form {
+  margin-top: 2px;
+}

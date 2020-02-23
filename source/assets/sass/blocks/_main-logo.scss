@@ -1,0 +1,17 @@
+.main-logo {
+  position: relative;
+  font-size: 2.5rem;
+  line-height: 1;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: $white;
+
+}
+
+.main-logo__asterisk {
+  position: absolute;
+  top: -1px;
+  right: -9px;
+  color: $pink;
+}

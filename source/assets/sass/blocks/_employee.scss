@@ -1,0 +1,34 @@
+.employee {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.employee__img {
+  margin-bottom: 15px;
+  order: -1;
+}
+
+.employee__title {
+  margin-bottom: 7px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.employee__description {
+  margin: 0;
+  margin-bottom: 24px;
+
+  font-size: 1.2rem;
+  line-height: 1.8;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}

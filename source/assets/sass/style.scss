@@ -1,0 +1,42 @@
+@import "variables";
+
+/* base */
+//@import "blocks/normalize";
+@import "blocks/font-face";
+@import "blocks/visually-hidden";
+
+/* layout */
+@import "blocks/column-3";
+@import "blocks/column-4";
+
+/* base-blocks */
+@import "blocks/global";
+@import "blocks/page";
+@import "blocks/container";
+
+@import "blocks/main-header";
+@import "blocks/main";
+@import "blocks/main-footer";
+
+@import "blocks/primary-title";
+@import "blocks/secondary-title";
+@import "blocks/tertiary-title";
+
+@import "blocks/button";
+
+/* blocks */
+@import "blocks/main-logo";
+@import "blocks/main-nav";
+@import "blocks/promo-slider";
+@import "blocks/slide-phone";
+@import "blocks/services";
+@import "blocks/service";
+@import "blocks/tags";
+@import "blocks/social";
+@import "blocks/portfolio";
+@import "blocks/about-us";
+@import "blocks/employee";
+@import "blocks/custom-input";
+@import "blocks/feedback-form";
+@import "blocks/feedback";
+@import "blocks/contacts";

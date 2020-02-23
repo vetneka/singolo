@@ -1,0 +1,38 @@
+.portfolio {
+  padding: 59px 0 54px;
+
+  background-color: $background-dark;
+  box-shadow: inset 0 -6px 0 0 #323746;
+}
+
+.portfolio__title {
+  margin-bottom: 17px;
+}
+
+.portfolio__description {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.portfolio__tags {
+  margin-bottom: 19px;
+}
+
+.portfolio__works {
+  max-height: 620px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  list-style-type: none;
+  overflow: hidden;
+}
+
+.portfolio__work-link {
+  display: block;
+}
+
+.portfolio__work-img {
+  display: block;
+  width: inherit;
+  height: inherit;
+}

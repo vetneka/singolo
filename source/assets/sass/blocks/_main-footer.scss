@@ -1,0 +1,16 @@
+.main-footer {
+  padding: 15px 0 16px;
+  background-color: $background-dark;
+}
+
+.main-footer__inner {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-footer__copyright {
+  font-size: 1.2rem;
+  line-height: 1.8;
+}

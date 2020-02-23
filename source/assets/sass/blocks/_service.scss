@@ -1,0 +1,68 @@
+.service {
+  position: relative;
+  padding-left: 80px;
+}
+
+.service__title {
+  margin-bottom: 7px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.service__description {
+  max-height: 67px;
+  margin: 0;
+
+  font-size: 1.2rem;
+  line-height: 1.8;
+  font-weight: 400;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+
+  text-align: justify;
+}
+
+.service__icon {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 59px;
+  height: 59px;
+  border: 2px solid $text-color;
+  border-radius: 50%;
+
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &--pencil {
+    background-image: url("../assets/img/icon-pencil.svg");
+  }
+
+  &--lamp {
+    background-image: url("../assets/img/icon-lamp.svg");
+  }
+
+  &--heart {
+    background-image: url("../assets/img/icon-heart.svg");
+  }
+
+  &--phone {
+    background-image: url("../assets/img/icon-phone.svg");
+  }
+
+  &--bubble {
+    background-image: url("../assets/img/icon-bubble.svg");
+  }
+
+  &--star {
+    background-image: url("../assets/img/icon-star.svg");
+  }
+}
