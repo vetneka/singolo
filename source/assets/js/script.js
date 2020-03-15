@@ -121,5 +121,25 @@
       });
     };
   })();
+
+  (function () {
+    const promoSlider = document.querySelector('.promo-slider');
+
+    window.addEventListener('load', () => {
+      slidePhoneHandler();
+    });
+
+    const slidePhoneHandler = () => {
+      promoSlider.addEventListener('click', (evt) => {
+        if (evt.target.classList.contains('slide-phone__button')) {
+          let slidePhoneButton = evt.target;
+          let slidePhone = slidePhoneButton.closest('.slide-phone');
+          let slidePhoneScreen = slidePhone.querySelector('.slide-phone__screen');
+
+          slidePhoneScreen.classList.toggle('slide-phone__screen--hidden');
+        }
+      });
+    };
+  })();
 })();
 
