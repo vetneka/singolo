@@ -25,6 +25,9 @@
   &--active {
     .main-nav__link {
       color: $pink;
+
+      pointer-events: none;
+      cursor: default;
     }
   }
 
