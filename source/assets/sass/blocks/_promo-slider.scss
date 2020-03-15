@@ -16,17 +16,52 @@
 }
 
 .promo-slider__slides {
-  margin: 0;
-  padding: 0 73px 0 72px;
-  list-style-type: none;
-
+  display: flex;
+  flex-flow: row nowrap;
   height: inherit;
+  margin: 0 73px 0 72px;
+  padding: 0;
+  list-style-type: none;
+  overflow: hidden;
 }
 
 .promo-slider__slide {
+  flex-shrink: 0;
+  width: 100%;
   position: relative;
   height: inherit;
   z-index: 1;
+
+  &--two-phones {
+    background-color: $pink;
+  }
+
+  &--three-phones {
+    background-color: $sky-blue;
+
+    .slide-phone {
+      left: 50%;
+      opacity: 0.5;
+
+      &--middle {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+        z-index: 10;
+      }
+
+      &:first-child {
+        transform: translateX(-130%) scale(0.8);
+      }
+
+      &:last-child {
+        transform: translateX(29%) scale(0.8);
+      }
+    }
+  }
+
+  &--hidden {
+    display: none;
+  }
 }
 
 .promo-slider__button {
@@ -46,6 +81,8 @@
 
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
+
+  z-index: 5;
 
   &:hover {
     transform: scale(1.2);
