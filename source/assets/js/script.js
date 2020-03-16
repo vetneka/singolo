@@ -152,6 +152,7 @@
 
     window.addEventListener('load', () => {
       tagsList.addEventListener('click', tagsClickHandler);
+      portfolioWorksList.addEventListener('click', portfolioWorksClickHandler);
     });
 
     const tagsClickHandler = (evt) => {
@@ -173,7 +174,7 @@
           tagButton.removeAttribute('disabled');
         }
       });
-    }
+    };
 
     const setActiveClass = (evt) => {
       const activeTagButton = evt.target;
@@ -203,7 +204,7 @@
       })
 
       portfolioWorksList.appendChild(portfolioFragment);
-    }
+    };
 
     const resetPortfolioWorks = () => {
       portfolioWorksList.innerHTML = '';
@@ -216,6 +217,30 @@
     const getRandomNumber = (min, max) => {
       let result = min + Math.random() * (max - min + 1);
       return Math.floor(result);
+    };
+
+    const portfolioWorksClickHandler = (evt) => {
+      if (evt.target.classList.contains('portfolio__work-link')) {
+        evt.preventDefault();
+
+        deactivateWorks(evt);
+        setActiveWorkClass(evt.target);
+      }
+    };
+
+    const deactivateWorks = (evt) => {
+      const elementParent = evt.target.closest('.portfolio__work');
+
+      portfolioWorks.forEach(work => {
+        if (!elementParent.classList.contains('portfolio__work--active')) {
+          work.classList.remove('portfolio__work--active');
+        }
+      });
+    };
+
+    const setActiveWorkClass = (element) => {
+      const elementParent = element.closest('.portfolio__work')
+      elementParent.classList.toggle('portfolio__work--active');
     };
   })();
 })();

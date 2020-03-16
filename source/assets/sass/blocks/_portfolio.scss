@@ -37,10 +37,33 @@
   animation-name: mymove;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
+
+  &--active {
+    .portfolio__work-link {
+      // Border
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 .portfolio__work-link {
+  position: relative;
   display: block;
+
+  // Border
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 5px solid $pink;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
 }
 
 .portfolio__work-img {
