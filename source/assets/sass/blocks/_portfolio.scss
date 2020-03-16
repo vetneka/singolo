@@ -27,6 +27,18 @@
   overflow: hidden;
 }
 
+@keyframes mymove {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.portfolio__work {
+  opacity: 0;
+  animation-name: mymove;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
 .portfolio__work-link {
   display: block;
 }

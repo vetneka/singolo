@@ -141,5 +141,82 @@
       });
     };
   })();
+
+  (function () {
+    const tagsList = document.querySelector('.tags');
+    const tags = tagsList.querySelectorAll('.tags__item');
+
+    const portfolioWorksList = document.querySelector('.portfolio__works');
+    const portfolioWorks = portfolioWorksList.querySelectorAll('.portfolio__work');
+    let portfolioWorksArray = Array.from(portfolioWorks);
+
+    window.addEventListener('load', () => {
+      tagsList.addEventListener('click', tagsClickHandler);
+    });
+
+    const tagsClickHandler = (evt) => {
+      if (evt.target.classList.contains('tags__button')) {
+        deactivateTags(evt);
+        setActiveClass(evt);
+
+        resetPortfolioWorks();
+        renderPortfolioWorks(slidePortfolioWorks());
+      }
+    };
+
+    const deactivateTags = (evt) => {
+      tags.forEach(tag => {
+        if (tag.classList.contains('tags__item--active')) {
+          const tagButton = tag.querySelector('.tags__button');
+
+          tag.classList.remove('tags__item--active');
+          tagButton.removeAttribute('disabled');
+        }
+      });
+    }
+
+    const setActiveClass = (evt) => {
+      const activeTagButton = evt.target;
+      const activeTagItem = activeTagButton.closest('.tags__item');
+
+      activeTagItem.classList.add('tags__item--active');
+      activeTagButton.setAttribute('disabled', '');
+    };
+
+    const slidePortfolioWorks = () => {
+      const SLICE_SIZE = 4;
+
+      portfolioWorksArray =
+        portfolioWorksArray
+          .slice(portfolioWorksArray.length - SLICE_SIZE)
+          .concat(portfolioWorksArray.slice(0, portfolioWorksArray.length - SLICE_SIZE));
+
+      return portfolioWorksArray;
+    };
+
+    const renderPortfolioWorks = (portfolioWorks) => {
+      const portfolioFragment = document.createDocumentFragment();
+
+      portfolioWorks.forEach((work) => {
+        setAnimationWork(work);
+        portfolioFragment.appendChild(work);
+      })
+
+      portfolioWorksList.appendChild(portfolioFragment);
+    }
+
+    const resetPortfolioWorks = () => {
+      portfolioWorksList.innerHTML = '';
+    };
+
+    const setAnimationWork = (work) => {
+      work.style.animationDelay = `${getRandomNumber(1, 9) / 10}s`;
+    };
+
+    const getRandomNumber = (min, max) => {
+      let result = min + Math.random() * (max - min + 1);
+      return Math.floor(result);
+    };
+  })();
 })();
 
