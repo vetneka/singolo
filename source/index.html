@@ -379,7 +379,7 @@
 
             <div class="column-3">
               <div class="column-3__item column-3__item--wide">
-                <form class="feedback-form feedback__feedback-form" action method="POST">
+                <form class="feedback-form feedback__feedback-form" action="/" method="POST">
                   <div class="feedback-form__item">
                     <label class="visually-hidden" for="user-name">Name:</label>
                     <input class="custom-input" type="text" name="user-name" id="user-name" placeholder="Name (Required)" required>
@@ -392,12 +392,12 @@
 
                   <div class="feedback-form__item">
                     <label class="visually-hidden" for="user-subject">Subject:</label>
-                    <input class="custom-input" type="text" name="user-subject" id="user-subject" placeholder="Subject">
+                    <input class="custom-input" type="text" name="user-subject" id="user-subject" placeholder="Subject" data-default-value="Without subject">
                   </div>
 
                   <div class="feedback-form__item">
                     <label class="visually-hidden" for="user-message">Subject:</label>
-                    <textarea class="custom-input feedback-form__textarea" name="user-message" id="user-message" placeholder="Describe your project in detail..."></textarea>
+                    <textarea class="custom-input feedback-form__textarea" name="user-message" id="user-message" placeholder="Describe your project in detail..." maxlength="100" data-default-value="Without description"></textarea>
                   </div>
 
                   <button class="button feedback-form__button" type="submit">Submit</button>
@@ -464,6 +464,28 @@
         </div>
       </footer>
     </div>
+
+    <template id="feedback-modal">
+      <div class="overlay">
+        <div class="modal modal--feedback">
+          <div class="modal__content">
+            <h2 class="secondary-title modal__title">The letter was sent</h2>
+
+            <p class="modal__paragraph modal__paragraph--theme">
+              <strong class="modal__paragraph-title">Subject:</strong>
+              <span class="modal__paragraph-text"></span>
+            </p>
+
+            <p class="modal__paragraph modal__paragraph--description">
+              <strong class="modal__paragraph-title">Description:</strong>
+              <span class="modal__paragraph-text"></span>
+            </p>
+
+            <button class="button modal__button" type="button">OK</button>
+          </div>
+        </div>
+      </div>
+    </template>
 
     <script src="script.js"></script>
   </body>

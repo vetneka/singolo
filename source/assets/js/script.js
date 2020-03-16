@@ -1,6 +1,7 @@
 "use strict";
 
 (function () {
+  // Main nav module
   (function () {
     const mainNav = document.querySelector(".main-nav");
     const mainNavItems = mainNav.querySelectorAll(".main-nav__item");
@@ -56,6 +57,7 @@
     };
   })();
 
+  // Slider module
   (function () {
     const promoSlider = document.querySelector('.promo-slider');
     const promoSliderButtons = promoSlider.querySelector('.promo-slider__buttons');
@@ -122,6 +124,7 @@
     };
   })();
 
+  // Slider phone module
   (function () {
     const promoSlider = document.querySelector('.promo-slider');
 
@@ -142,6 +145,7 @@
     };
   })();
 
+  // Portfolio module
   (function () {
     const tagsList = document.querySelector('.tags');
     const tags = tagsList.querySelectorAll('.tags__item');
@@ -243,5 +247,76 @@
       elementParent.classList.toggle('portfolio__work--active');
     };
   })();
-})();
 
+  // Get a quote module
+  (function () {
+    const feedbackModalTemplate = document.querySelector('#feedback-modal').content;
+    const feedbackForm  = document.querySelector('.feedback-form');
+    const feedbackFormSubject  = feedbackForm.querySelector('#user-subject');
+    const feedbackFormDescription  = feedbackForm.querySelector('#user-message');
+
+    window.addEventListener('load', () => {
+      feedbackForm.addEventListener('submit', formSubmitHandler);
+    });
+
+    const formSubmitHandler = (evt) => {
+      evt.preventDefault();
+      const feedbackModal = createFeedbackModal(collectFormData(feedbackForm));
+      document.body.appendChild(feedbackModal);
+    };
+
+    const createFeedbackModal = (formData) => {
+      const feedbackModal = feedbackModalTemplate.cloneNode(true);
+      const overlay = feedbackModal.querySelector('.overlay');
+
+      const feedbackModalTheme = feedbackModal.querySelector('.modal__paragraph--theme .modal__paragraph-text');
+      const feedbackModalDescription = feedbackModal.querySelector('.modal__paragraph--description .modal__paragraph-text');
+      const feedbackModalButton = feedbackModal.querySelector('.modal__button');
+
+      const modalCloseButtonHandler = (evt) => {
+        const modalOverlay = evt.target.closest('.overlay');
+        modalOverlay.remove();
+        feedbackModalButton.removeEventListener('click', modalCloseButtonHandler);
+      };
+
+      const modalCloseOverlayHandler = (evt) => {
+        if (evt.target.classList.contains('overlay')) {
+          evt.target.remove();
+          feedbackModalButton.removeEventListener('click', modalCloseOverlayHandler);
+        }
+      };
+
+      feedbackModalButton.addEventListener('click', modalCloseButtonHandler);
+      overlay.addEventListener('click', modalCloseOverlayHandler);
+
+      feedbackModalTheme.textContent = formData['user-subject'];
+      feedbackModalDescription.textContent = formData['user-message'];
+
+      if (feedbackModalTheme.textContent === feedbackFormSubject.dataset.defaultValue) {
+        feedbackModalTheme.previousElementSibling.innerHTML = '';
+      }
+
+      if (feedbackModalDescription.textContent === feedbackFormDescription.dataset.defaultValue) {
+        feedbackModalDescription.previousElementSibling.innerHTML = '';
+      }
+
+      return feedbackModal;
+    }
+
+    const collectFormData = (form) => {
+      const formData = {};
+
+      for (let element of form.elements) {
+        if (element.value === '') {
+          if (element.dataset.defaultValue) {
+            formData[element.id] = element.dataset.defaultValue;
+          }
+        } else {
+          formData[element.id] = element.value;
+        }
+      }
+
+      return formData;
+    }
+  })();
+})();

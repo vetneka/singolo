@@ -1,0 +1,27 @@
+.modal {
+  padding: 20px 30px;
+  background-color: $main-color;
+  box-shadow: 0 0 20px 0 rgba($black, 0.3);
+
+  &--feedback {
+    min-width: 300px;
+    max-width: 500px;
+    max-height: 280px;
+  }
+}
+
+.modal__content {
+  overflow: hidden;
+}
+
+.modal__paragraf {
+  &--description {
+    max-height: 90px;
+    overflow-x: auto;
+  }
+}
+
+.modal__button {
+  color: $white;
+  background-color: $background-dark;
+}

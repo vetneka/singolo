@@ -13,6 +13,9 @@
 @import "blocks/global";
 @import "blocks/page";
 @import "blocks/container";
+@import "blocks/button";
+@import "blocks/overlay";
+@import "blocks/modal";
 
 @import "blocks/main-header";
 @import "blocks/main";
@@ -21,8 +24,6 @@
 @import "blocks/primary-title";
 @import "blocks/secondary-title";
 @import "blocks/tertiary-title";
-
-@import "blocks/button";
 
 /* blocks */
 @import "blocks/main-logo";
