@@ -9,7 +9,7 @@
   <body>
     <h1 class="visually-hidden">Singolo</h1>
 
-    <div class="page">
+    <div class="page" id='home'>
       <header class="main-header page__main-header">
         <div class="container">
           <div class="main-header__inner">
@@ -21,23 +21,23 @@
             <nav class="main-nav main-header__main-nav">
               <ul class="main-nav__list">
                 <li class="main-nav__item main-nav__item--active">
-                  <a class="main-nav__link">Home</a>
+                  <a class="main-nav__link" href="#home">Home</a>
                 </li>
 
                 <li class="main-nav__item">
-                  <a class="main-nav__link" href="#">Services</a>
+                  <a class="main-nav__link" href="#services">Services</a>
                 </li>
 
                 <li class="main-nav__item">
-                  <a class="main-nav__link" href="#">Portfolio</a>
+                  <a class="main-nav__link" href="#portfolio">Portfolio</a>
                 </li>
 
                 <li class="main-nav__item">
-                  <a class="main-nav__link" href="#">About</a>
+                  <a class="main-nav__link" href="#about">About</a>
                 </li>
 
                 <li class="main-nav__item">
-                  <a class="main-nav__link" href="#">Contact</a>
+                  <a class="main-nav__link" href="#contact">Contact</a>
                 </li>
               </ul>
             </nav>
@@ -51,9 +51,36 @@
             <h2 class="visually-hidden">Promo action</h2>
 
             <ul class="promo-slider__slides">
-              <li class="promo-slider__slide">
-                <div class="slide-phone slide-phone--vertical"></div>
-                <div class="slide-phone slide-phone--horizontal"></div>
+              <li class="promo-slider__slide promo-slider__slide--two-phones">
+                <div class="slide-phone slide-phone--vertical">
+                  <div class="slide-phone__phone"></div>
+                  <div class="slide-phone__screen"></div>
+                  <button class="slide-phone__button"></button>
+                </div>
+
+                <div class="slide-phone slide-phone--horizontal">
+                  <div class="slide-phone__phone"></div>
+                  <div class="slide-phone__screen"></div>
+                  <button class="slide-phone__button"></button>
+                </div>
+              </li>
+
+              <li class="promo-slider__slide promo-slider__slide--three-phones">
+                <div class="slide-phone slide-phone--vertical">
+                  <div class="slide-phone__phone"></div>
+                  <div class="slide-phone__screen"></div>
+                </div>
+
+                <div class="slide-phone slide-phone--vertical slide-phone--middle">
+                  <div class="slide-phone__phone"></div>
+                  <div class="slide-phone__screen"></div>
+                  <button class="slide-phone__button"></button>
+                </div>
+
+                <div class="slide-phone slide-phone--vertical">
+                  <div class="slide-phone__phone"></div>
+                  <div class="slide-phone__screen"></div>
+                </div>
               </li>
             </ul>
 
@@ -69,7 +96,7 @@
           </div>
         </section>
 
-        <section class="services">
+        <section class="services" id="services">
           <div class="container">
             <h2 class="secondary-title services__title">Our Services</h2>
 
@@ -129,7 +156,7 @@
           </div>
         </section>
 
-        <section class="portfolio">
+        <section class="portfolio" id="portfolio">
           <div class="container">
             <h2 class="secondary-title portfolio__title">Portfolio</h2>
 
@@ -137,16 +164,16 @@
 
             <ul class="tags portfolio__tags">
               <li class="tags__item tags__item--active">
-                <a class="tags__link">All</a>
+                <button class="tags__button" type="button" disabled>All</button>
               </li>
               <li class="tags__item">
-                <a class="tags__link" href="#">Web Design</a>
+                <button class="tags__button" type="button">Web Design</button>
               </li>
               <li class="tags__item">
-                <a class="tags__link" href="#">Graphic Design</a>
+                <button class="tags__button" type="button">Graphic Design</button>
               </li>
               <li class="tags__item">
-                <a class="tags__link" href="#">Artwork</a>
+                <button class="tags__button" type="button">Artwork</button>
               </li>
             </ul>
 
@@ -226,7 +253,7 @@
           </div>
         </section>
 
-        <section class="about-us">
+        <section class="about-us" id="about">
           <div class="container">
             <h2 class="secondary-title about-us__title">About Us</h2>
 
@@ -344,7 +371,7 @@
           </div>
         </section>
 
-        <section class="feedback">
+        <section class="feedback" id="contact">
           <div class="container">
             <h2 class="secondary-title feedback__title">Get a Quote</h2>
 
@@ -352,7 +379,7 @@
 
             <div class="column-3">
               <div class="column-3__item column-3__item--wide">
-                <form class="feedback-form feedback__feedback-form" action method="POST">
+                <form class="feedback-form feedback__feedback-form" action="/" method="POST">
                   <div class="feedback-form__item">
                     <label class="visually-hidden" for="user-name">Name:</label>
                     <input class="custom-input" type="text" name="user-name" id="user-name" placeholder="Name (Required)" required>
@@ -365,12 +392,12 @@
 
                   <div class="feedback-form__item">
                     <label class="visually-hidden" for="user-subject">Subject:</label>
-                    <input class="custom-input" type="text" name="user-subject" id="user-subject" placeholder="Subject">
+                    <input class="custom-input" type="text" name="user-subject" id="user-subject" placeholder="Subject" data-default-value="Without subject">
                   </div>
 
                   <div class="feedback-form__item">
                     <label class="visually-hidden" for="user-message">Subject:</label>
-                    <textarea class="custom-input feedback-form__textarea" name="user-message" id="user-message" placeholder="Describe your project in detail..."></textarea>
+                    <textarea class="custom-input feedback-form__textarea" name="user-message" id="user-message" placeholder="Describe your project in detail..." maxlength="100" data-default-value="Without description"></textarea>
                   </div>
 
                   <button class="button feedback-form__button" type="submit">Submit</button>
@@ -406,7 +433,7 @@
       <footer class="main-footer page-footer">
         <div class="container">
           <div class="main-footer__inner">
-            <p class="main-footer__copyright">© Copyright 2013</p>
+            <p class="main-footer__copyright">© Copyright 2013 · by PSDchat.com</p>
 
             <ul class="social footer__social">
               <li class="social__item">
@@ -437,5 +464,29 @@
         </div>
       </footer>
     </div>
+
+    <template id="feedback-modal">
+      <div class="overlay">
+        <div class="modal modal--feedback">
+          <div class="modal__content">
+            <h2 class="secondary-title modal__title">The letter was sent</h2>
+
+            <p class="modal__paragraph modal__paragraph--theme">
+              <strong class="modal__paragraph-title">Subject:</strong>
+              <span class="modal__paragraph-text"></span>
+            </p>
+
+            <p class="modal__paragraph modal__paragraph--description">
+              <strong class="modal__paragraph-title">Description:</strong>
+              <span class="modal__paragraph-text"></span>
+            </p>
+
+            <button class="button modal__button" type="button">OK</button>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <script src="script.js"></script>
   </body>
 </html>
