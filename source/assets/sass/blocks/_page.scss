@@ -2,6 +2,7 @@
   display: flex;
   flex-flow: column nowrap;
   height: inherit;
+  padding-top: $main-header-height;
 }
 
 .page__main-header {
@@ -10,7 +11,6 @@
 
 .page__main {
   flex-grow: 1;
-  margin-top: 95px;
 }
 
 .page__main-footer {

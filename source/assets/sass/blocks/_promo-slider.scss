@@ -1,14 +1,26 @@
 .promo-slider {
   position: relative;
-  height: 600px;
+  height: 600px + $main-header-height;
   padding-top: 53px;
   padding-bottom: 50px;
   background-color: $pink;
 
   box-shadow: inset 0 -6px 0 0 #ea676b;
 
-  overflow: hidden;
+  //overflow: hidden;
 
+  @include offsetForAnchor;
+
+  &--bg-0 {
+    background-color: $pink;
+    box-shadow: inset 0 -6px 0 0 #ea676b;
+  }
+
+  &--bg-1 {
+    background-color: $sky-blue;
+    box-shadow: inset 0 -6px 0 0 #4c79ec;
+  }
+  
   .container {
     position: relative;
     height: 100%;
@@ -16,6 +28,7 @@
 }
 
 .promo-slider__slides {
+  position: relative;
   display: flex;
   flex-flow: row nowrap;
   height: inherit;
@@ -26,19 +39,15 @@
 }
 
 .promo-slider__slide {
+  display: none;
   flex-shrink: 0;
   width: 100%;
   position: relative;
   height: inherit;
   z-index: 1;
-
-  &--two-phones {
-    background-color: $pink;
-  }
+  animation: 0.5s ease-in-out;
 
   &--three-phones {
-    background-color: $sky-blue;
-
     .slide-phone {
       left: 50%;
       opacity: 0.5;
@@ -59,10 +68,48 @@
     }
   }
 
-  &--hidden {
-    display: none;
+  &--active {
+    display: block;
   }
 }
+
+@keyframes left {
+  from { right: 0; }
+  to { right: -100%; }
+}
+
+@keyframes right {
+  from { right: 100%; }
+  to { right: 0; }
+}
+
+.next {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.to-left {
+  animation-name: left;
+}
+
+.to-right {
+  animation-name: right;
+  animation-direction: reverse;
+}
+
+.from-left {
+  animation-name: left;
+  animation-direction: reverse;
+}
+
+.from-right {
+  animation-name: right;
+}
+
+
+
 
 .promo-slider__button {
   position: absolute;

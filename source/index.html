@@ -9,7 +9,7 @@
   <body>
     <h1 class="visually-hidden">Singolo</h1>
 
-    <div class="page" id='home'>
+    <div class="page">
       <header class="main-header page__main-header">
         <div class="container">
           <div class="main-header__inner">
@@ -20,8 +20,8 @@
 
             <nav class="main-nav main-header__main-nav">
               <ul class="main-nav__list">
-                <li class="main-nav__item main-nav__item--active">
-                  <a class="main-nav__link" href="#home">Home</a>
+                <li class="main-nav__item">
+                  <a class="main-nav__link main-nav__link--active" href="#home">Home</a>
                 </li>
 
                 <li class="main-nav__item">
@@ -45,13 +45,26 @@
         </div>
       </header>
 
-      <main class="main page__main">
-        <section class="promo-slider">
+      <main class="main page__main" >
+        <section class="promo-slider" id='home'>
           <div class="container">
             <h2 class="visually-hidden">Promo action</h2>
 
             <ul class="promo-slider__slides">
-              <li class="promo-slider__slide promo-slider__slide--two-phones">
+              <li class="promo-slider__slide promo-slider__slide--active promo-slider__slide--two-phones">
+                <div class="slide-phone slide-phone--vertical">
+                  <div class="slide-phone__phone"></div>
+                  <div class="slide-phone__screen"></div>
+                  <button class="slide-phone__button"></button>
+                </div>
+
+                <div class="slide-phone slide-phone--horizontal">
+                  <div class="slide-phone__phone"></div>
+                  <div class="slide-phone__screen"></div>
+                  <button class="slide-phone__button"></button>
+                </div>
+              </li>
+              <li class="promo-slider__slide promo-slider__slide--active promo-slider__slide--two-phones">
                 <div class="slide-phone slide-phone--vertical">
                   <div class="slide-phone__phone"></div>
                   <div class="slide-phone__screen"></div>
@@ -163,8 +176,8 @@
             <p class="portfolio__description">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
 
             <ul class="tags portfolio__tags">
-              <li class="tags__item tags__item--active">
-                <button class="tags__button" type="button" disabled>All</button>
+              <li class="tags__item">
+                <button class="tags__button tags__button--active" type="button" disabled>All</button>
               </li>
               <li class="tags__item">
                 <button class="tags__button" type="button">Web Design</button>

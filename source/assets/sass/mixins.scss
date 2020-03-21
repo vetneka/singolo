@@ -1,0 +1,5 @@
+@mixin offsetForAnchor {
+  border-top: $main-header-height solid transparent;
+  margin-top: -$main-header-height;
+  background-clip: padding-box;
+}
