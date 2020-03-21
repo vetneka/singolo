@@ -1,60 +1,88 @@
-"use strict";
+'use strict';
 
 (function () {
+  // Util module debounce
+  (function () {
+    let DEBOUNCE_INTERVAL = 500;
+
+    window.debounce = function (callback) {
+      let lastTimeout = null;
+
+      return () => {
+        let parameters = arguments;
+
+        if (lastTimeout) {
+          window.clearTimeout(lastTimeout);
+        }
+
+        lastTimeout = window.setTimeout(() => {
+          callback.apply(null, parameters);
+        }, DEBOUNCE_INTERVAL);
+      };
+    };
+  })();
+
+  const getRandomNumber = (min, max) => {
+    let result = min + Math.random() * (max - min + 1);
+    return Math.floor(result);
+  };
+
+  const removeActiveState = (node, className, action) => {
+    let nodeItems = node.querySelectorAll(`.${className}`);
+    nodeItems.forEach(item => {
+      item.classList.remove(`${className}--active`);
+
+      if (action) {
+        action(item);
+      }
+    });
+  };
+
+  const setActiveState = (node, className, action) => {
+    node.classList.add(className);
+
+    if (action) {
+      action();
+    }
+  };
+
   // Main nav module
   (function () {
-    const mainNav = document.querySelector(".main-nav");
-    const mainNavItems = mainNav.querySelectorAll(".main-nav__item");
+    const mainNav = document.querySelector('.main-nav');
+    const mainNavLinks = mainNav.querySelectorAll('.main-nav__link');
 
-    window.addEventListener("load", () => {
-      mainNav.addEventListener("click", mainNavClickHandler);
+    const mainSections = document.querySelectorAll('.main > section');
+
+    window.addEventListener('load', () => {
+      window.addEventListener('scroll', onWindowScroll);
+      mainNav.addEventListener('click', mainNavClickHandler);
     });
 
-    const mainNavClickHandler = evt => {
-      if (evt.target.classList.contains("main-nav__link")) {
-        setInitialStateMainNav();
-        removeAcitveClasses();
-        setActiveClass(evt);
-        scrollToAnchor(evt);
+    const mainNavClickHandler = (evt) => {
+      if (evt.target.classList.contains('main-nav__link')) {
+        removeActiveState(mainNav, 'main-nav__link');
+        setActiveState(evt.target, 'main-nav__link--active');
       }
     };
 
-    const setInitialStateMainNav = () => {
-      mainNavItems.forEach(item => {
-        item.classList.remove("main-nav__item--active");
+    const onWindowScroll = window.debounce(() => {
+      let currentScrollPosition = window.scrollY;
 
-        let itemLink = item.querySelector(".main-nav__link");
-        itemLink.setAttribute("href", `#${itemLink.textContent.toLowerCase()}`);
-      });
-    };
+      mainSections.forEach(section => {
+        if ((section.offsetTop) <= currentScrollPosition && 
+            (section.offsetTop + section.offsetHeight) > currentScrollPosition) {
+              history.replaceState("data", "title", location.origin + location.pathname + "#" + section.id);
 
-    const removeAcitveClasses = () => {
-      mainNavItems.forEach(item => {
-        item.classList.remove("main-nav__item--active");
-      });
-    };
+              mainNavLinks.forEach(link => {
+                link.classList.remove('main-nav__link--active');
 
-    const setActiveClass = evt => {
-      evt.target
-        .closest(".main-nav__item")
-        .classList.add("main-nav__item--active");
-    };
-
-    const scrollToAnchor = evt => {
-      evt.preventDefault();
-
-      let mainHeader = document.querySelector(".main-header");
-      let mainHeaderHeight = mainHeader.getBoundingClientRect().height;
-
-      let anchor = evt.target.hash;
-      let elementToScroll = document.querySelector(anchor);
-      let elementToScrollPositionY =
-        elementToScroll.getBoundingClientRect().top + window.scrollY;
-
-      location.hash = anchor;
-
-      scrollTo(0, elementToScrollPositionY - mainHeaderHeight);
-    };
+                if (section.getAttribute('id') === link.getAttribute('href').substring(1)) {
+                  link.classList.add('main-nav__link--active');
+                }
+              })
+            }
+        });
+    });
   })();
 
   // Slider module
@@ -63,65 +91,61 @@
     const promoSliderButtons = promoSlider.querySelector('.promo-slider__buttons');
     const promoSliderSlides = promoSlider.querySelectorAll('.promo-slider__slide');
 
-    window.addEventListener('load', () => {
-      hideSlides();
-      promoSliderButtons.addEventListener('click', promoSliderButtonsHandler);
-    });
+    let currentSlide = 0;
+    let isEnabled = true;
+
+    const changeCurrentSlide = (n) => {
+      currentSlide = (n + promoSliderSlides.length) % promoSliderSlides.length;
+      changeSliderBackground(currentSlide);
+    }
+
+    const hideSlide = (direction) => {
+      isEnabled = false;
+      promoSliderSlides[currentSlide].classList.add(direction);
+      promoSliderSlides[currentSlide].addEventListener('animationend', function () {
+        this.classList.remove('promo-slider__slide--active', direction);
+      });
+    }
+
+    const showSlide = (direction) => {
+      promoSliderSlides[currentSlide].classList.add('next', direction);
+      promoSliderSlides[currentSlide].addEventListener('animationend', function () {
+        this.classList.remove('next', direction);
+        this.classList.add('promo-slider__slide--active');
+        isEnabled = true;
+      });
+    };
+
+    const nextSlide = (n) => {
+      hideSlide('to-left');
+      changeCurrentSlide(n + 1);
+      showSlide('from-right');
+    };
+
+    const previousSlide = (n) => {
+      hideSlide('to-right');
+      changeCurrentSlide(n - 1);
+      showSlide('from-left');
+    };
 
     const promoSliderButtonsHandler = (evt) => {
-      if (evt.target.classList.contains('promo-slider__button')) {
-        changeSlides(evt);
-        changeSliderBackground();
+      if (evt.target.classList.contains('promo-slider__button--left') && isEnabled) {
+        previousSlide(currentSlide);
+      }
+      
+      if (evt.target.classList.contains('promo-slider__button--right') && isEnabled) {
+        nextSlide(currentSlide);
       }
     };
 
-    const hideSlides = () => {
-      promoSliderSlides.forEach((slide, idx) => {
-        if (idx > 0) {
-          slide.classList.add('promo-slider__slide--hidden');
-        }
-      });
+    const changeSliderBackground = (currentSlide) => {
+      promoSlider.className = 'promo-slider';
+      promoSlider.classList.add(`promo-slider--bg-${currentSlide}`);
     };
 
-    const changeSlides = (evt) => {
-      let directionChange = evt.target;
-      let currentActiveSlide;
-
-      promoSliderSlides.forEach(slide => {
-        if (!slide.classList.contains('promo-slider__slide--hidden')) {
-          currentActiveSlide = slide;
-        }
-      });
-
-      if (directionChange.classList.contains('promo-slider__button--right')) {
-        let nextSlide = currentActiveSlide.nextElementSibling;
-
-        if (nextSlide === null) {
-          nextSlide = promoSliderSlides[0];
-        }
-
-        nextSlide.classList.remove('promo-slider__slide--hidden');
-        currentActiveSlide.classList.add('promo-slider__slide--hidden');
-      } else {
-        let previousSlide = currentActiveSlide.previousElementSibling;
-
-        if (previousSlide === null) {
-          previousSlide = promoSliderSlides[promoSliderSlides.length - 1];
-        }
-
-        previousSlide.classList.remove('promo-slider__slide--hidden');
-        currentActiveSlide.classList.add('promo-slider__slide--hidden');
-      }
-    };
-
-    const changeSliderBackground = () => {
-      promoSliderSlides.forEach(slide => {
-        if (!slide.classList.contains('promo-slider__slide--hidden')) {
-          let currentSlideBackground = window.getComputedStyle(slide).backgroundColor;
-          promoSlider.style.backgroundColor = currentSlideBackground;
-        }
-      });
-    };
+    window.addEventListener('load', () => {
+      promoSliderButtons.addEventListener('click', promoSliderButtonsHandler);
+    });
   })();
 
   // Slider phone module
@@ -148,10 +172,10 @@
   // Portfolio module
   (function () {
     const tagsList = document.querySelector('.tags');
-    const tags = tagsList.querySelectorAll('.tags__item');
 
     const portfolioWorksList = document.querySelector('.portfolio__works');
     const portfolioWorks = portfolioWorksList.querySelectorAll('.portfolio__work');
+    const portfolioWorksLinks = portfolioWorksList.querySelectorAll('.portfolio__work-link');
     let portfolioWorksArray = Array.from(portfolioWorks);
 
     window.addEventListener('load', () => {
@@ -160,32 +184,14 @@
     });
 
     const tagsClickHandler = (evt) => {
-      if (evt.target.classList.contains('tags__button')) {
-        deactivateTags(evt);
-        setActiveClass(evt);
+      let currentButton = evt.target;
 
-        resetPortfolioWorks();
-        renderPortfolioWorks(slidePortfolioWorks());
+      if (currentButton.classList.contains('tags__button')) {
+        removeActiveState(tagsList, 'tags__button', (button) => button.removeAttribute('disabled'));
+        setActiveState(currentButton, 'tags__button--active', () => currentButton.setAttribute('disabled', ''));
+
+        renderPortfolioWorks();
       }
-    };
-
-    const deactivateTags = (evt) => {
-      tags.forEach(tag => {
-        if (tag.classList.contains('tags__item--active')) {
-          const tagButton = tag.querySelector('.tags__button');
-
-          tag.classList.remove('tags__item--active');
-          tagButton.removeAttribute('disabled');
-        }
-      });
-    };
-
-    const setActiveClass = (evt) => {
-      const activeTagButton = evt.target;
-      const activeTagItem = activeTagButton.closest('.tags__item');
-
-      activeTagItem.classList.add('tags__item--active');
-      activeTagButton.setAttribute('disabled', '');
     };
 
     const slidePortfolioWorks = () => {
@@ -199,52 +205,38 @@
       return portfolioWorksArray;
     };
 
-    const renderPortfolioWorks = (portfolioWorks) => {
+    const renderPortfolioWorks = window.debounce(function () {
+      portfolioWorksList.innerHTML = '';
+
       const portfolioFragment = document.createDocumentFragment();
+      const portfolioWorks = slidePortfolioWorks();
 
       portfolioWorks.forEach((work) => {
-        setAnimationWork(work);
+        setAnimationDelay(work);
         portfolioFragment.appendChild(work);
       })
 
       portfolioWorksList.appendChild(portfolioFragment);
-    };
+    });
 
-    const resetPortfolioWorks = () => {
-      portfolioWorksList.innerHTML = '';
-    };
-
-    const setAnimationWork = (work) => {
-      work.style.animationDelay = `${getRandomNumber(1, 9) / 10}s`;
-    };
-
-    const getRandomNumber = (min, max) => {
-      let result = min + Math.random() * (max - min + 1);
-      return Math.floor(result);
+    const setAnimationDelay = (work) => {
+      work.style.animationDelay = `${getRandomNumber(1, 5) / 10}s`;
     };
 
     const portfolioWorksClickHandler = (evt) => {
       if (evt.target.classList.contains('portfolio__work-link')) {
         evt.preventDefault();
-
-        deactivateWorks(evt);
-        setActiveWorkClass(evt.target);
+        toggleActiveState(evt);
       }
     };
 
-    const deactivateWorks = (evt) => {
-      const elementParent = evt.target.closest('.portfolio__work');
-
-      portfolioWorks.forEach(work => {
-        if (!elementParent.classList.contains('portfolio__work--active')) {
-          work.classList.remove('portfolio__work--active');
+    const toggleActiveState = (evt) => {
+      portfolioWorksLinks.forEach(work => {
+        if (!evt.target.classList.contains('portfolio__work-link--active')) {
+          work.classList.remove('portfolio__work-link--active');
         }
       });
-    };
-
-    const setActiveWorkClass = (element) => {
-      const elementParent = element.closest('.portfolio__work')
-      elementParent.classList.toggle('portfolio__work--active');
+      evt.target.classList.toggle('portfolio__work-link--active');
     };
   })();
 
@@ -263,6 +255,7 @@
       evt.preventDefault();
       const feedbackModal = createFeedbackModal(collectFormData(feedbackForm));
       document.body.appendChild(feedbackModal);
+      feedbackForm.reset();
     };
 
     const createFeedbackModal = (formData) => {

@@ -1,6 +1,8 @@
 .about-us {
   padding: 58px 0 43px;
   box-shadow: inset 0 -6px 0 0 $white;
+
+  @include offsetForAnchor;
 }
 
 .about-us__title {

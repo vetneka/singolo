@@ -22,15 +22,6 @@
     font-weight: 600;
   }
 
-  &--active {
-    .main-nav__link {
-      color: $pink;
-
-      pointer-events: none;
-      cursor: default;
-    }
-  }
-
   &:last-child {
     padding-right: 0;
   }
@@ -51,5 +42,12 @@
 
   &[href]:active {
     opacity: 0.7;
+  }
+
+  &--active {
+    color: $pink;
+
+    pointer-events: none;
+    cursor: default;
   }
 }

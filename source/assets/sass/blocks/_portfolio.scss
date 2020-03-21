@@ -3,6 +3,8 @@
 
   background-color: $background-dark;
   box-shadow: inset 0 -6px 0 0 #323746;
+  
+  @include offsetForAnchor;
 }
 
 .portfolio__title {
@@ -37,15 +39,6 @@
   animation-name: mymove;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
-
-  &--active {
-    .portfolio__work-link {
-      // Border
-      &::before {
-        opacity: 1;
-      }
-    }
-  }
 }
 
 .portfolio__work-link {
@@ -63,6 +56,13 @@
     border: 5px solid $pink;
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
+  }
+
+  &--active {
+    // Border
+    &::before {
+      opacity: 1;
+    }
   }
 }
 

@@ -12,12 +12,6 @@
   margin-right: 10px;
   line-height: 1;
 
-  &--active {
-    .tags__button {
-      color: $tags-link-color-active;
-    }
-  }
-
   &:last-child {
     margin-right: 0;
   }
@@ -49,5 +43,9 @@
 
   &:disabled {
     cursor: default;
+  }
+
+  &--active {
+    color: $tags-link-color-active;
   }
 }
