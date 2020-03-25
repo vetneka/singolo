@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2d303a">
     <title>Singolo</title>
     <link rel="stylesheet" href="style.css">
   </head>
@@ -13,34 +14,42 @@
       <header class="main-header page__main-header">
         <div class="container">
           <div class="main-header__inner">
-            <a class="main-logo">
+            <a class="main-logo main-header__main-logo" href="#home">
               Singolo
               <sup class="main-logo__asterisk">*</sup>
             </a>
 
             <nav class="main-nav main-header__main-nav">
-              <ul class="main-nav__list">
-                <li class="main-nav__item">
-                  <a class="main-nav__link main-nav__link--active" href="#home">Home</a>
-                </li>
-
-                <li class="main-nav__item">
-                  <a class="main-nav__link" href="#services">Services</a>
-                </li>
-
-                <li class="main-nav__item">
-                  <a class="main-nav__link" href="#portfolio">Portfolio</a>
-                </li>
-
-                <li class="main-nav__item">
-                  <a class="main-nav__link" href="#about">About</a>
-                </li>
-
-                <li class="main-nav__item">
-                  <a class="main-nav__link" href="#contact">Contact</a>
-                </li>
-              </ul>
+              <div class="main-nav__overlay">
+                <div class="main-nav__inner">
+                  <ul class="main-nav__list">
+                    <li class="main-nav__item">
+                      <a class="main-nav__link main-nav__link--active" href="#home">Home</a>
+                    </li>
+    
+                    <li class="main-nav__item">
+                      <a class="main-nav__link" href="#services">Services</a>
+                    </li>
+    
+                    <li class="main-nav__item">
+                      <a class="main-nav__link" href="#portfolio">Portfolio</a>
+                    </li>
+    
+                    <li class="main-nav__item">
+                      <a class="main-nav__link" href="#about">About</a>
+                    </li>
+    
+                    <li class="main-nav__item">
+                      <a class="main-nav__link" href="#contact">Contact</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </nav>
+
+            <button class="hamburger main-header__hamburger">
+              <span class="visually-hidden">Открыть меню</span>
+            </button>
           </div>
         </div>
       </header>
@@ -395,12 +404,12 @@
                     <input class="custom-input" type="text" name="user-subject" id="user-subject" placeholder="Subject" data-default-value="Without subject">
                   </div>
 
-                  <div class="feedback-form__item">
+                  <div class="feedback-form__item feedback-form__item--textarea">
                     <label class="visually-hidden" for="user-message">Subject:</label>
                     <textarea class="custom-input feedback-form__textarea" name="user-message" id="user-message" placeholder="Describe your project in detail..." maxlength="100" data-default-value="Without description"></textarea>
                   </div>
 
-                  <button class="button feedback-form__button" type="submit">Submit</button>
+                  <button class="button feedback-form__button" type="submit">Send</button>
                 </form>
               </div>
 
@@ -433,7 +442,7 @@
       <footer class="main-footer page-footer">
         <div class="container">
           <div class="main-footer__inner">
-            <p class="main-footer__copyright">© Copyright 2013 · by PSDchat.com</p>
+            <p class="main-footer__copyright">© Copyright 2013</p>
 
             <ul class="social footer__social">
               <li class="social__item">
