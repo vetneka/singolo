@@ -1,22 +1,31 @@
 .feedback-form__item {
-  margin-bottom: 16px;
+  margin-bottom: 15px;
 
   &:last-child {
     margin-bottom: 0;
   }
+
+  &--textarea {
+    margin-bottom: 8px;
+  }
 }
 
 .feedback-form__textarea {
-  min-height: 202px;
+  min-height: 160px;
   resize: none;
 }
 
 .feedback-form__button {
-  width: 100%;
+  min-width: 136px;
+  padding: 12px 20px;
   border-radius: 4px;
   background-color: $feedback-button-color;
-  color: inherit;
+  
+  font-size: 1.4rem;
+  font-weight: 600;
   text-align: center;
+  text-transform: uppercase;
+  color: $feedback-button-text-color;
   transition: opacity 0.3s ease-in-out;
 
   &:hover {
@@ -25,5 +34,45 @@
 
   &:active {
     opacity: 0.3;
+  }
+}
+
+@media (max-width: $tablet-width) {
+  .feedback-form__item {
+    margin-bottom: 11px;
+
+    &--textarea {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .feedback-form__item {
+    margin-bottom: 11px;
+
+    &--textarea {
+      margin-bottom: 7px;
+    }
+  }
+
+  .feedback-form__button {
+    width: 100%;
+    padding-top: 17px;
+    padding-bottom: 19px;
+    
+    font-size: 1.4rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: $feedback-button-text-color;
+    transition: opacity 0.3s ease-in-out;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:active {
+      opacity: 0.3;
+    }
   }
 }

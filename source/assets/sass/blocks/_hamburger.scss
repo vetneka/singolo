@@ -1,0 +1,35 @@
+.hamburger {
+  position: relative;
+  width: 25px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2.4px;
+    background-color: $white;
+    border-radius: 5px;
+    color: $white;
+
+    box-shadow:
+      0 8.5px 0 0 currentColor, 
+      0 17px 0 0 currentColor;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.hamburger--opened {
+  transform: rotate(-90deg);
+}

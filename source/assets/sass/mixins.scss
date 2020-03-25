@@ -3,3 +3,9 @@
   margin-top: -$main-header-height;
   background-clip: padding-box;
 }
+
+@mixin offsetForAnchorMobile {
+  border-top: $main-header-height-mobile solid transparent;
+  margin-top: -$main-header-height-mobile;
+  background-clip: padding-box;
+}

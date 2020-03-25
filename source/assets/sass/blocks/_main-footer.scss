@@ -1,5 +1,5 @@
 .main-footer {
-  padding: 15px 0 16px;
+  padding: 13px 0 12px;
   background-color: $background-dark;
 }
 
@@ -11,6 +11,21 @@
 }
 
 .main-footer__copyright {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.8;
+  font-weight: 900;
+}
+
+@media (max-width: $mobile-width) {
+  .main-footer {
+    padding: 22px 0 22px;
+  }
+
+  .main-footer__inner {
+    justify-content: center;
+  }
+
+  .main-footer__copyright {
+    display: none;
+  }
 }

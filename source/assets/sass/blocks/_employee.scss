@@ -4,6 +4,7 @@
 }
 
 .employee__img {
+  width: 100%;
   margin-bottom: 15px;
   order: -1;
 }
@@ -31,4 +32,29 @@
   word-wrap: break-word;
   word-break: break-word;
   hyphens: auto;
+}
+
+@media (max-width: $tablet-width) {
+  .employee__title {
+    margin-bottom: 0;
+  }
+
+  .employee__img {
+    margin-bottom: 10px;
+  }
+
+  .employee__description {
+    margin: 0;
+    margin-bottom: 34px;
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .employee__img {
+    margin-bottom: 15px;
+  }
+
+  .employee__description {
+    margin-bottom: 12px;
+  }
 }

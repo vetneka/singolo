@@ -2,57 +2,42 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 240px;
-  height: 483px;
+  width: 31%;
+  height: 100%;
 
   background-image: url("../assets/img/bg-phone-shadow.png");
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: left top;
 
-  /* // Phone, screen
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-repeat: no-repeat;
-
-    z-index: 1;
-  } */
-
   &--vertical {
     .slide-phone__phone {
-      background-image: url("../assets/img/bg-phone.png");
-      background-position: left top;
+      background-image: url("../assets/img/bg-phone_new.png");
     }
 
     .slide-phone__screen {
-      background-image: url("../assets/img/bg-phone-screen-1.jpg");
-      background-position: 14px 65px;
+      background-image: url("../assets/img/bg-phone-screen-1_new.png");
     }
   }
 
   &--horizontal {
     left: initial;
     right: 0;
-    transform: rotate(90deg) rotateX(180deg) translateY(-121px);
+    transform: rotate(90deg) translateX(150%) rotateX(180deg) translateY(-100%);
+    transform-origin: 100% 0;
 
     .slide-phone__phone {
-      background-image: url("../assets/img/bg-phone.png");
-      background-position: left bottom;
-      transform: rotateX(180deg);
+      background-image: url("../assets/img/bg-phone_new.png");
+      transform: scaleY(-1) translateY(5%);
     }
 
     .slide-phone__screen {
-      background-image: url("../assets/img/bg-phone-screen-2.jpg");
-      background-position: 14px 60px;
+      background-image: url("../assets/img/bg-phone-screen-2_new.png");
+      transform: scaleY(-1) translateY(5%);
     }
 
     .slide-phone__button {
-      top: 8px;
-      bottom: initial;
+      top: 2%;
     }
   }
 }
@@ -65,6 +50,7 @@
   right: 0;
   bottom: 0;
   background-repeat: no-repeat;
+  background-size: contain;
 
   z-index: 1;
 }
@@ -77,13 +63,20 @@
 
 .slide-phone__button {
   position: absolute;
-  bottom: 32px;
-  left: calc(50% - 34px);
-  width: 42px;
-  height: 42px;
+  bottom: 6.6%;
+  left: 50%;
+  transform: translateX(-89%);
+  width: 17%;
+  height: 8.7%;
   padding: 0;
   border: 0;
   background-color: transparent;
   cursor: pointer;
   z-index: 2;
+}
+
+@media (max-width: $tablet-width) {
+  .slide-phone {
+    width: 32%;
+  }
 }

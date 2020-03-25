@@ -1,5 +1,5 @@
 .feedback {
-  padding: 58px 0 37px;
+  padding: 58px 0 34px;
   background-color: $pink;
   color: $feedback-text-color;
 
@@ -15,10 +15,40 @@
 
 .feedback__description {
   margin: 0;
-  margin-bottom: 42px;
+  margin-bottom: 40px;
   letter-spacing: 0.008em;
 }
 
 .feedback__feedback-form {
   margin-top: 2px;
+}
+
+@media (max-width: $tablet-width) {
+  .feedback {
+    padding: 51px 0 15px;
+  }
+
+  .feedback__description {
+    margin-bottom: 22px;
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .feedback {
+    padding: 43px 0 36px;
+
+    @include offsetForAnchorMobile;
+
+    .column-3__item:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .feedback__title {
+    margin-bottom: 17px;
+  }
+
+  .feedback__description {
+    margin-bottom: 21px;
+  }
 }

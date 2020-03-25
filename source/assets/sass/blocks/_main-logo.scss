@@ -4,9 +4,17 @@
   line-height: 1;
   font-weight: 600;
   text-transform: uppercase;
+  text-decoration: none;
   letter-spacing: -0.02em;
   color: $white;
 
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
 }
 
 .main-logo__asterisk {
@@ -14,4 +22,10 @@
   top: -1px;
   right: -9px;
   color: $pink;
+}
+
+@media (max-width: $mobile-width) {
+  .main-logo {
+    font-size: 2rem;
+  }
 }

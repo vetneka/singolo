@@ -5,7 +5,7 @@
   (function () {
     let DEBOUNCE_INTERVAL = 500;
 
-    window.debounce = function (callback) {
+    const debounce = (callback) => {
       let lastTimeout = null;
 
       return () => {
@@ -20,31 +20,73 @@
         }, DEBOUNCE_INTERVAL);
       };
     };
+
+    const getRandomNumber = (min, max) => {
+      let result = min + Math.random() * (max - min + 1);
+      return Math.floor(result);
+    };
+  
+    const removeActiveState = (node, className, action) => {
+      let nodeItems = node.querySelectorAll(`.${className}`);
+      nodeItems.forEach(item => {
+        item.classList.remove(`${className}--active`);
+  
+        if (action) {
+          action(item);
+        }
+      });
+    };
+  
+    const setActiveState = (node, className, action) => {
+      node.classList.add(className);
+  
+      if (action) {
+        action();
+      }
+    };
+
+    window.util = {
+      debounce: debounce,
+      getRandomNumber: getRandomNumber,
+      removeActiveState: removeActiveState,
+      setActiveState: setActiveState,
+    }
   })();
 
-  const getRandomNumber = (min, max) => {
-    let result = min + Math.random() * (max - min + 1);
-    return Math.floor(result);
-  };
+  // Mobile menu module
+  (function () {
+    const mainHeaderHamburger = document.querySelector('.main-header__hamburger');
+    const mainHeaderMainLogo = document.querySelector('.main-header__main-logo');
+    const mainNav = document.querySelector('.main-nav');
+    const mainNavOverlay = mainNav.querySelector('.main-nav__overlay');
 
-  const removeActiveState = (node, className, action) => {
-    let nodeItems = node.querySelectorAll(`.${className}`);
-    nodeItems.forEach(item => {
-      item.classList.remove(`${className}--active`);
-
-      if (action) {
-        action(item);
-      }
+    window.addEventListener('load', () => {
+      mainHeaderHamburger.addEventListener('click', onClickToggleMainMenuState);
     });
-  };
 
-  const setActiveState = (node, className, action) => {
-    node.classList.add(className);
+    const onClickToggleMainMenuState = () => {
+      mainNav.classList.toggle('main-nav--opened');
+      mainHeaderHamburger.classList.toggle('hamburger--opened');
+      mainHeaderMainLogo.classList.toggle('main-header__main-logo--move');
 
-    if (action) {
-      action();
-    }
-  };
+      if (mainNav.classList.contains('main-nav--opened')) {
+        mainNavOverlay.addEventListener('click', onClickMainNavOverlay);
+        console.log('overlay event add')
+      } else {
+        mainNavOverlay.removeEventListener('click', onClickMainNavOverlay);
+        console.log('overlay event remove else')
+      }
+    };
+
+    const onClickMainNavOverlay = (evt) => {
+      if (!evt.target.classList.contains('main-nav__overlay')) return;
+      onClickToggleMainMenuState();
+    };
+
+    window.mainMenu = {
+      toggleState: onClickToggleMainMenuState,
+    };
+  })();
 
   // Main nav module
   (function () {
@@ -60,12 +102,13 @@
 
     const mainNavClickHandler = (evt) => {
       if (evt.target.classList.contains('main-nav__link')) {
-        removeActiveState(mainNav, 'main-nav__link');
-        setActiveState(evt.target, 'main-nav__link--active');
+        window.util.removeActiveState(mainNav, 'main-nav__link');
+        window.util.setActiveState(evt.target, 'main-nav__link--active');
+        window.mainMenu.toggleState();
       }
     };
 
-    const onWindowScroll = window.debounce(() => {
+    const onWindowScroll = window.util.debounce(() => {
       let currentScrollPosition = window.scrollY;
 
       mainSections.forEach(section => {
@@ -187,8 +230,8 @@
       let currentButton = evt.target;
 
       if (currentButton.classList.contains('tags__button')) {
-        removeActiveState(tagsList, 'tags__button', (button) => button.removeAttribute('disabled'));
-        setActiveState(currentButton, 'tags__button--active', () => currentButton.setAttribute('disabled', ''));
+        window.util.removeActiveState(tagsList, 'tags__button', (button) => button.removeAttribute('disabled'));
+        window.util.setActiveState(currentButton, 'tags__button--active', () => currentButton.setAttribute('disabled', ''));
 
         renderPortfolioWorks();
       }
@@ -205,7 +248,7 @@
       return portfolioWorksArray;
     };
 
-    const renderPortfolioWorks = window.debounce(function () {
+    const renderPortfolioWorks = window.util.debounce(function () {
       portfolioWorksList.innerHTML = '';
 
       const portfolioFragment = document.createDocumentFragment();
@@ -220,7 +263,7 @@
     });
 
     const setAnimationDelay = (work) => {
-      work.style.animationDelay = `${getRandomNumber(1, 5) / 10}s`;
+      work.style.animationDelay = `${window.util.getRandomNumber(1, 5) / 10}s`;
     };
 
     const portfolioWorksClickHandler = (evt) => {

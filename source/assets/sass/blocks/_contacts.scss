@@ -13,6 +13,7 @@
   margin-bottom: 20px;
 
   line-height: 1.84;
+  text-align: justify;
 }
 
 .contacts__list {
@@ -59,3 +60,26 @@
   }
 }
 
+@media (max-width: $tablet-width) {
+  .contacts {
+    margin-left: 10px;
+  }
+
+  .contacts__title {
+    margin-bottom: 0;
+  }
+  
+  .contacts__description {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .contacts {
+    margin-left: 0;
+  }
+
+  .contacts__item {
+    margin-bottom: 4px;
+  }
+}

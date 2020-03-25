@@ -1,5 +1,5 @@
 .about-us {
-  padding: 58px 0 43px;
+  padding: 56px 0 41px;
   box-shadow: inset 0 -6px 0 0 $white;
 
   @include offsetForAnchor;
@@ -14,6 +14,7 @@
   margin-bottom: 44px;
   line-height: 1.7;
   letter-spacing: 0.008em;
+  text-align: justify;
 }
 
 .about-us__team {
@@ -25,4 +26,55 @@
 
 .about-us__team-item {
   width: inherit;
+}
+
+@media (max-width: $tablet-width) {
+  .about-us {
+    padding-top: 51px;
+    padding-bottom: 44px;
+
+    .column-3 {
+      margin-left: -7px;
+      margin-right: -6px;
+    }
+
+    .column-3__item {
+      margin-left: 9px;
+      margin-right: 6px;
+    }
+  }
+
+  .about-us__title {
+    margin-bottom: 16px;
+  }
+
+  .about-us__description {
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .about-us {
+    padding-top: 32px;
+    padding-bottom: 46px;
+
+    @include offsetForAnchorMobile;
+
+    .column-3__item {
+      flex-basis: 50%;
+      margin-left: 8px;
+      margin-right: 6px;
+      margin-bottom: 34px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .about-us__description {
+    margin-bottom: 26px;
+    text-align: left;
+    line-height: 1.65;
+  }
 }

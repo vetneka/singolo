@@ -16,3 +16,9 @@
 .page__main-footer {
   flex-shrink: 0;
 }
+
+@media (max-width: $mobile-width) {
+  .page {
+    padding-top: $main-header-height-mobile;
+  }
+}

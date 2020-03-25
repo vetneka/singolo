@@ -10,12 +10,32 @@
 .column-3__item {
   flex-grow: 1;
 
-  width: 300px;
+  flex: 1 0 25%;
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 30px;
 
   &--wide {
-    width: 620px;
+    flex-basis: 58%;
+  }
+}
+
+@media (max-width: $tablet-width) {
+  .column-3__item {
+    flex: 1 0 30%;
+
+    &--wide {
+      flex-basis: 60%;
+    }
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .column-3__item {
+    flex: 1 0 50%;
+
+    &--wide {
+      flex-basis: 60%;
+    }
   }
 }

@@ -24,3 +24,41 @@
   margin-top: 1px;
   margin-right: -1px;
 }
+
+.main-header__hamburger {
+  display: none;
+  position: absolute;
+  left: 20px;
+  z-index: 10;
+}
+
+@media (max-width: $mobile-width) {
+  .main-header {
+    padding-top: 27px;
+    padding-bottom: 24px;
+  }
+
+  .main-header__inner {
+    justify-content: center;
+  }
+
+  .main-header__main-logo {
+    margin-left: 4px;
+    transition: transform 0.3s ease-in-out;
+
+    &--move {
+      position: relative;
+      transform: translateX(-90%);
+      z-index: 10;
+    }
+
+    .main-logo__asterisk {
+      top: 0;
+      right: -7px;
+    }
+  }
+
+  .main-header__hamburger {
+    display: block;
+  }
+}
