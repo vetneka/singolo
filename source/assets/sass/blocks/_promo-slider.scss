@@ -74,6 +74,44 @@
   }
 }
 
+@keyframes left {
+  from { right: 0; }
+  to { right: -100%; }
+}
+
+@keyframes right {
+  from { right: 100%; }
+  to { right: 0; }
+}
+
+.next {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.to-left {
+  animation-name: left;
+}
+
+.to-right {
+  animation-name: right;
+  animation-direction: reverse;
+}
+
+.from-left {
+  animation-name: left;
+  animation-direction: reverse;
+}
+
+.from-right {
+  animation-name: right;
+}
+
+
+
+
 .promo-slider__button {
   position: absolute;
   top: calc(50% - 14px);
